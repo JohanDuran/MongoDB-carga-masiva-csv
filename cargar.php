@@ -11,9 +11,9 @@
 			$handle = fopen($file_tmp, "r");
 			if ($handle) {/*Si se pudo leer*/
 				$linea = parser(fgets($handle));
-				if(count($linea)===1){
+				if(count($linea)==1){
 					unset($linea);
-					$errores[]="Archivo vacio";
+					$errores[]="Archivo vacio, solamente tiene una linea";
 				}
 			    fclose($handle); 
 			}else{

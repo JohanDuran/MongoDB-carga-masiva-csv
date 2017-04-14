@@ -1,0 +1,16 @@
+.same-size{
+	width: 120px;
+	text-align: center;
+	margin: 4px;
+}
+
+.center{
+	text-align: center;
+}
+
+/* Sombra sobre las secciones y el aside */
+.border-shadaw{
+	-webkit-box-shadow: 1px 1px 6px 3px #A8A8A8;
+	box-shadow: 1px 1px 6px 3px #A8A8A8;
+	/* Para que calce con el menu */
+}
