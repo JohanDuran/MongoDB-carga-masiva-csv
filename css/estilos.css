@@ -1,7 +1,13 @@
 .same-size{
-	width: 120px;
 	text-align: center;
 	margin: 4px;
+	width: 130px;
+}
+
+.double-size{
+	text-align: center;
+	margin: 4px;
+	width: 260px;
 }
 
 .center{

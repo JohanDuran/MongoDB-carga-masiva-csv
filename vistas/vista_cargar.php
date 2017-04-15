@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
@@ -16,23 +16,30 @@
 			<!-- Seccion de exito -->
 			<?php if (empty($errores)&& !empty($linea)):?><!-- Caso donde no existen errores, monstrar lo indicado --> 
 				<div class="row">
-					<div class="col-md-6 col-sm-6 col-xs-6 border-shadaw">
-							<?php  $contador=0;?>
-							<?php foreach ($linea as $palabra => $value):?>
+					<div class="col-md-4 col-sm-4 col-xs-4 border-shadaw">
+							<?php  $contador=50;?><!-- del 50 en adelante son los nuevos -->
+							<?php foreach ($linea as $palabra):?>
 								<!-- Las opciones dadas por el usuario -->
-								<button class="btn btn-danger same-size" onclick="button_id(this)" value='<?=$contador?>'> 
-									<?php echo $value; $contador++; ?>
-									
-								</button>
+								<span name="contenedor" id='<?=$contador?>' class="btn btn-danger double-size"ondrop="drop(event)" ondragover="allowDrop(event)"> 
+									<?php 
+										if (strlen($palabra) <= 13) {
+											echo $palabra;
+										}else{
+											echo substr($palabra, 0,13);
+										}
+									?>
+								</span>
+								 <?php $contador++; ?>
 							<?php endforeach;?>
 					</div>
-					<div class="col-md-6 col-sm-6 col-xs-6 border-shadaw">
-						<!-- Se define una cantidad por fila igual a la presente en el if utilizando modulo -->
-						<?php $cantidad_fila=0; ?>
+					<div class="col-md-8 col-sm-8 col-xs-8 border-shadaw">
+						<?php  $contador=0;?> <!-- tiene 50 espacios en caso de necesitar mas cambiarlo arriba -->
 						<!-- Todas las opciones para hacer match -->
-						<?php foreach ($indices as $indice => $value):?>
+						<?php foreach ($indices as $indice):?>
 							<!-- Las opciones dadas por el usuario -->
-							<button  class="btn btn-primary same-size" ><?php echo $value; ?></button>
+							<span id="<?php echo $contador; $contador++; ?>" class="same-size btn btn-primary" draggable="true" ondragstart="drag(event)" >
+								<?php echo $indice; ?>
+							</span>
 						<?php endforeach;?>
 					</div>
 				</div>
@@ -48,7 +55,6 @@
 		<?php endif; ?>
 	
 	</div>
-    <script src="js/scripts.js"></script>
 		<!-- JQUERY -->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
     <!-- Optional theme -->
@@ -56,5 +62,8 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="js/scripts.js"></script>
+
+    
 </body>
 </html>
