@@ -20,3 +20,11 @@
 	box-shadow: 1px 1px 6px 3px #A8A8A8;
 	/* Para que calce con el menu */
 }
+
+.btn-lightblue{
+	background-color: lightblue;
+}
+
+.oculto{
+	visibility: hidden;
+}

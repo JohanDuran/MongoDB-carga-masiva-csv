@@ -9,8 +9,21 @@
 			$file_ext=strtolower(end(explode('.',$_FILES['file']['name'])));
 			$errores=verificarCsv($file_ext,$file_size);
 			$handle = fopen($file_tmp, "r");
+			$linea="";
+			$archivo="";
+			$indices=getFilds();
 			if ($handle) {/*Si se pudo leer*/
-				$linea = parser(fgets($handle));
+				//se llama a la funcion parser que separa por coma, archivo funciones.php
+				$cont=0;
+				while (($line=fgets($handle))!=false) {
+					if($cont==0){
+						$linea = parser(limpiar($line),",");//se lee solo la primera linea, encabezados	
+					}else{
+						$archivo.=limpiar($line).";";
+					}
+					$cont++;
+				}
+				//si la linea solo tiene una palabra no se acepta
 				if(count($linea)==1){
 					unset($linea);
 					$errores[]="Archivo vacio, solamente tiene una linea";
@@ -19,7 +32,6 @@
 			}else{
 				$errores[]="No se puede leer el archivo";
 			}
-			$indices=array('Institucion','email','Estacion','Nombre','Fecha','Hora','Latitud','Longitud','Location','pO2','dbo','nh4','Color','Porcentaje O2','DBO','NH4','CF','pH','Fosfato','Nitrato','t','turbidez','Sólidos totales','DQO','EC','PO4','GYA','SD','Ssed','SST','ST','SAAM','Aforo');
 			require'vistas/vista_cargar.php';
 
 		}
