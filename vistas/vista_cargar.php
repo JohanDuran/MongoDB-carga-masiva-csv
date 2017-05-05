@@ -62,7 +62,7 @@
 		<form action="insertarEnBD.php" method="get" onsubmit="return validateForm()" class="center">
 			<input type="text" name="archivo" value="<?php echo $archivo ?>" class="oculto" id="archivo">
 			<input type="submit" class="btn btn-primary">
-			<button class="btn btn-default">Cancelar</button>
+			<a href="index.php"><button class="btn btn-default">Cancelar</button></a>
 		</form>
 		<br>
 		<br>

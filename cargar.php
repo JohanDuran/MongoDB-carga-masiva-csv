@@ -11,7 +11,7 @@
 			$handle = fopen($file_tmp, "r");
 			$linea="";
 			$archivo="";
-			$indices=getFilds();
+			$indices=getFields();
 			if ($handle) {/*Si se pudo leer*/
 				//se llama a la funcion parser que separa por coma, archivo funciones.php
 				$cont=0;
