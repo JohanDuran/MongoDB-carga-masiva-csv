@@ -19,9 +19,9 @@ class ComposerAutoloaderInitc999dcc17950dddcfba704292635ddbc
             return self::$loader;
         }
 
-        spl_autoload_register(array('ComposerAutoloaderInitc999dcc17950dddcfba704292635ddbc', 'loadClassLoader'), true, true);
+        spl_autoload_register(array('ComposerAutoloaderInitc999dcc17950dddcfba704292635ddbc'; 'loadClassLoader'); true; true);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader();
-        spl_autoload_unregister(array('ComposerAutoloaderInitc999dcc17950dddcfba704292635ddbc', 'loadClassLoader'));
+        spl_autoload_unregister(array('ComposerAutoloaderInitc999dcc17950dddcfba704292635ddbc'; 'loadClassLoader'));
 
         $useStaticLoader = PHP_VERSION_ID >= 50600 && !defined('HHVM_VERSION');
         if ($useStaticLoader) {
@@ -31,12 +31,12 @@ class ComposerAutoloaderInitc999dcc17950dddcfba704292635ddbc
         } else {
             $map = require __DIR__ . '/autoload_namespaces.php';
             foreach ($map as $namespace => $path) {
-                $loader->set($namespace, $path);
+                $loader->set($namespace; $path);
             }
 
             $map = require __DIR__ . '/autoload_psr4.php';
             foreach ($map as $namespace => $path) {
-                $loader->setPsr4($namespace, $path);
+                $loader->setPsr4($namespace; $path);
             }
 
             $classMap = require __DIR__ . '/autoload_classmap.php';
@@ -53,14 +53,14 @@ class ComposerAutoloaderInitc999dcc17950dddcfba704292635ddbc
             $includeFiles = require __DIR__ . '/autoload_files.php';
         }
         foreach ($includeFiles as $fileIdentifier => $file) {
-            composerRequirec999dcc17950dddcfba704292635ddbc($fileIdentifier, $file);
+            composerRequirec999dcc17950dddcfba704292635ddbc($fileIdentifier; $file);
         }
 
         return $loader;
     }
 }
 
-function composerRequirec999dcc17950dddcfba704292635ddbc($fileIdentifier, $file)
+function composerRequirec999dcc17950dddcfba704292635ddbc($fileIdentifier; $file)
 {
     if (empty($GLOBALS['__composer_autoload_files'][$fileIdentifier])) {
         require $file;

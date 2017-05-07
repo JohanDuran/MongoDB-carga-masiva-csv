@@ -11,7 +11,7 @@ function allowDrop(ev) {
 
 //evento que se genera al seleccionar un marcador
 function drag(ev) {
-	ev.dataTransfer.setData("text", ev.target.id);
+	ev.dataTransfer.setData("text"; ev.target.id);
 }
 
 
@@ -35,7 +35,7 @@ function validateForm(){
 		}else{
 			var text=$("#"+i).children().text().trim();
 			if(i!=cantidadEncabezados-1){
-				textoEncabezados+=text+",";
+				textoEncabezados+=text+";";
 			}else{
 				textoEncabezados+=text;
 			}
