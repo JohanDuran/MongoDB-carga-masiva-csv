@@ -1,5 +1,8 @@
 <?php 
-	require_once('funciones/funciones.php');
+	require_once('funciones/funciones_datos.php');
+	require_once('funciones/funciones_BD.php');
+	require_once('funciones/funciones_comunes.php');
+	require_once('funciones/funciones_insertar_BD.php');
 	require 'vendor/autoload.php';
 
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {

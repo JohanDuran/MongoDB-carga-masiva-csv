@@ -1,5 +1,6 @@
 <?php 
-	require_once('funciones/funciones.php');
+	require_once('funciones/funciones_comunes.php');
+	require_once('funciones/funciones_cargar.php');
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if(isset($_FILES['file'])){
 			$file_name = $_FILES['file']['name'];
