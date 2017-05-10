@@ -40,7 +40,7 @@
 						<!-- Todas las opciones para hacer match -->
 						<?php foreach ($indices as $indice):?>
 							<!-- Las opciones dadas por el usuario -->
-							<span id="<?php echo $contador; $contador++; ?>" class="same-size btn btn-success" draggable="true" ondragstart="drag(event)" >
+							<span id="<?php echo $contador, $contador++; ?>" class="same-size btn btn-success" draggable="true" ondragstart="drag(event)" >
 								<?php echo $indice; ?>
 							</span>
 						<?php endforeach;?>
@@ -48,7 +48,7 @@
 				</div>
 		<!-- Se muestra el json aun no se ha cargado con datos nuevos -->
 		<?php 
-			//insertar($file_tmp,',');
+			//insertar($file_tmp,','),
 		?>
 		<!-- Seccion de errores -->
 		<?php else: ?>	<!-- Caso donde si existen errores, mostar errores y opcion de volver -->

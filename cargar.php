@@ -7,17 +7,17 @@
 			$file_tmp =$_FILES['file']['tmp_name'];
 			$file_type=$_FILES['file']['type'];
 			$file_ext=strtolower(end(explode('.',$_FILES['file']['name'])));
-			$errores=verificarCsv($file_ext;$file_size);
-			$handle = fopen($file_tmp; "r");
+			$errores=verificarCsv($file_ext,$file_size);
+			$handle = fopen($file_tmp, "r");
 			$linea="";
 			$archivo="";
 			$indices=getFields();
 			if ($handle) {/*Si se pudo leer*/
-				//se llama a la funcion parser que separa por coma; archivo funciones.php
+				//se llama a la funcion parser que separa por coma, archivo funciones.php
 				$cont=0;
 				while (($line=fgets($handle))!=false) {
 					if($cont==0){
-						$linea = parser(limpiar($line);";");//se lee solo la primera linea; encabezados	
+						$linea = parser(limpiar($line),",");//se lee solo la primera linea, encabezados	
 					}else{
 						$archivo.=limpiar($line).";";
 					}
@@ -26,7 +26,7 @@
 				//si la linea solo tiene una palabra no se acepta
 				if(count($linea)==1){
 					unset($linea);
-					$errores[]="Archivo vacio; solamente tiene una linea";
+					$errores[]="Archivo vacio, solamente tiene una linea";
 				}
 			    fclose($handle); 
 			}else{

@@ -1,27 +1,27 @@
 <?php
 
 
-	function verificarCsv($file_ext;$file_size){
-		$extensiones= array("php";"html";"csv");
+	function verificarCsv($file_ext,$file_size){
+		$extensiones= array("php","html","csv");
 		$errors=array();
-		if(in_array($file_ext;$extensiones)=== false){
+		if(in_array($file_ext,$extensiones)=== false){
 		 	$errors[]="Extension no permitida";
 		}
 
 		if($file_size > 2097152){
-			$errors[]='Tama;o excede limite';
+			$errors[]='Tama,o excede limite';
 		}
 
 		return $errors;
 	}
 
-	function parser($cadena;$delimiter){
-		return explode($delimiter; $cadena);
+	function parser($cadena,$delimiter){
+		return explode($delimiter, $cadena);
 	}
 
 
-	function getJson($newFile;$delimiter){
-		$data = csvToArray($newFile;$delimiter);
+	function getJson($newFile,$delimiter){
+		$data = csvToArray($newFile,$delimiter);
 		// Set number of elements (minus 1 because we shift off the first row)
 		$count = count($data) - 2;
 		  
@@ -34,7 +34,7 @@
 		  
 		// Bring it all together
 		for ($j = 0; $j < $count; $j++) {
-		  $d = array_combine($keys; $data[$j]);
+		  $d = array_combine($keys, $data[$j]);
 		  $newArray[$j] = $d;
 		}
 		// Print it out as JSON
@@ -42,61 +42,61 @@
 	}
 
 
-	function csvToArray($file; $delimiter) { 
-		$handle = fopen($file; 'r');
+	function csvToArray($file, $delimiter) { 
+		$handle = fopen($file, 'r');
 		if ($handle) { 
-			$i = 0; 
-	    	while (($lineArray = fgetcsv($handle; 4000; $delimiter; '"')) !== FALSE) { 
+			$i = 0;
+	    	while (($lineArray = fgetcsv($handle, 4000, $delimiter, '"')) !== FALSE) { 
 		  	for ($j = 0; $j < count($lineArray); $j++) { 
-	        	$arr[$i][$j] = $lineArray[$j]; 
+	        	$arr[$i][$j] = $lineArray[$j];
 	        } 
-	      	$i++; 
+	      	$i++;
 	      } 
 	    fclose($handle); 
 	  } 
-	  return $arr; 
+	  return $arr;
 	}
 
 	function getFields(){
-			return ['usuario';'temp_agua';'velocidad_agua';'area_cause_rio';'PO2';'DBO';'NH4';'DQO';'EC';'PO4';'GYA';'SD';'Ssed';'SST';'SAAM';'T';'Aforo';'ST';'CF';'pH';'Fosfato';'Nitrato';'Turbidez';'Sol_totales';'nombre_institucion';'nombre_estacion';'fecha'; 'kit_desc';'lat';'lng';'alt';'cod_prov';'cond_cant';'cod_dist';'cod_rio';'Color';'DBO';'NH4'];
+			return ['usuario','temp_agua','velocidad_agua','area_cause_rio','PO2','DBO','NH4','DQO','EC','PO4','GYA','SD','Ssed','SST','SAAM','T','Aforo','ST','CF','pH','Fosfato','Nitrato','Turbidez','Sol_totales','nombre_institucion','nombre_estacion','fecha', 'kit_desc','lat','lng','alt','cod_prov','cond_cant','cod_dist','cod_rio','Color','DBO','NH4'];
 	}
 
 	function getRequiredHolandes(){
-		return ['NH4';'PO2';'DBO'];
+		return ['NH4','PO2','DBO'];
 	}
 
 	function getRequiredNsf(){
-		return ['NH4';'PO2';'CF';'pH'];
+		return ['NH4','PO2','CF','pH'];
 	}
 
 	function getGenerals(){
-		return ['usuario';'fecha';'indice_usado';'val_indice';'color';'temp_agua';'velocidad_agua';'velocidad_agua';'area_cauce_rio'];
+		return ['usuario','fecha','indice_usado','val_indice','color','temp_agua','velocidad_agua','velocidad_agua','area_cauce_rio'];
 	}
 
 	function getOptionals(){
-		return ['DQO';'EC';'PO4';'GYA';'SD';'Ssed';'SST';'SAAM';'T';'Aforo';'ST';'CF';'pH';'Fosfato';'Nitrato';'Turbidez';'Sol_totales'];
+		return ['DQO','EC','PO4','GYA','SD','Ssed','SST','SAAM','T','Aforo','ST','CF','pH','Fosfato','Nitrato','Turbidez','Sol_totales'];
 	}
 
 	function getLocation(){
-		return ['lat';'lng'];
+		return ['lat','lng'];
 	}
 
 	function getGeoreferenced(){
-		return ['alt';'cod_prov';'cod_cant';'cod_dist';'cod_rio'];
+		return ['alt','cod_prov','cod_cant','cod_dist','cod_rio'];
 	}
 
 	function getPOI(){
-		return ['nombre_institucion';'nombre_estacion';'kit_desc'];
+		return ['nombre_institucion','nombre_estacion','kit_desc'];
 	}
 
 
 	function limpiar($cadena){
-		$cadena = str_replace(' '; ''; $cadena);
+		$cadena = str_replace(' ', '', $cadena);
 		htmlspecialchars($cadena);
 		return $cadena;
 	}
 
-	function insertar($database;$collection;$datos){
+	function insertar($database,$collection,$datos){
 	    try {
 	        $connection = new MongoDB\Client;
 	        $database = $connection->$database;
@@ -105,7 +105,7 @@
 	        echo "Error: " . $e->getMessage();
 	    }
 
-	    $collection->insertMany($datos; array('safe' => true));
+	    $collection->insertMany($datos, array('safe' => true));
 	}
 
 	function checkIndexHolandes($documento){
@@ -147,7 +147,8 @@
 	    	}else{
 	    		$obligatorios[$require]="ND";
 	    	}
-	    }
+	    	}
+	    
 
 	    $optionals = getOptionals();
 	    foreach ($optionals as $optional) {
