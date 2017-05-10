@@ -11,10 +11,10 @@
 <body>
 	<div class="container">
 	    <h2>Subir archivos csv</h2>
-		<form action="cargar.php" method="post" enctype="multipart/form-data">
+		<form action="cargar.php" method="post" onsubmit="return validateFile()" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="fileToUpload">Seleccione archivo:</label>
-		    <input type="file" class="filestyle" data-buttonName="btn-primary" name="file" id="fileToUpload">
+		    <input type="file" id="archivo" class="filestyle" data-buttonName="btn-primary" name="file" id="fileToUpload">
 		</div>
 	    	<input type="submit" class="btn btn-default" value="Cargar archivo" name="submit">
 		</form>
@@ -31,6 +31,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
+	<script src="js/scripts.js"></script>
 
 </body>
 </html>

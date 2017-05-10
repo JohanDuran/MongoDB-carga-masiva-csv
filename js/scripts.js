@@ -47,4 +47,12 @@ function validateForm(){
 	return true;
 }
 
+function validateFile(){
+	if($("#archivo").isEmptyObject()){
+		return false;
+	}else{
+		return true;
+	}
+}
+
 

@@ -6,7 +6,7 @@
 			$file_size =$_FILES['file']['size'];
 			$file_tmp =$_FILES['file']['tmp_name'];
 			$file_type=$_FILES['file']['type'];
-			$file_ext=strtolower(end(explode('.';$_FILES['file']['name'])));
+			$file_ext=strtolower(end(explode('.',$_FILES['file']['name'])));
 			$errores=verificarCsv($file_ext;$file_size);
 			$handle = fopen($file_tmp; "r");
 			$linea="";
