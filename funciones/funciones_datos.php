@@ -8,7 +8,7 @@
 	}
 
 	function getRequiredNsf(){
-		return ['NH4','PO2','CF','pH'];
+		return ["PO2","DBO","CF","pH"];
 	}
 
 	function getGenerals(){

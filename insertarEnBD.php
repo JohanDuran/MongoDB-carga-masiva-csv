@@ -25,20 +25,28 @@
 		//se obtiene el path del archivo para ubicarlo dentor de getJson
 		$metaData = stream_get_meta_data($fp);
 		$filepath = $metaData['uri'];
-		//se obtiene el array jso;
+		//se obtiene con los datos
 		$documentos=getJson($filepath,",");
+		//contador para cada "documento dentro del array"
 		$contador=0;
 		if(checkIndexHolandes($documentos[0])){//si se puede calcular indice holandes
 			foreach ($documentos as $documento) {
-				$documentos[$contador++]=crearCamposHolandes($documento);
+				$documentos[$contador++]=crearCamposIndice($documento,"holandes");
+				echo "holandes";
 			}	
-		}else{//si se puede calcular indice nsf
+		}else if(checkIndexNsf($documentos[0])){//si se puede calcular indice nsf
 			foreach ($documentos as $documento) {
-				$documentos[$contador++]=crearCamposNsf($documento);
+				$documentos[$contador++]=crearCamposIndice($documento,"nsf");
+				echo "nsf";	
+			}
+		}else{//ni holandes ni nsf se carga todo en opcionales.
+			foreach ($documentos as $documento) {
+				$documentos[$contador++]=crearCamposIndice($documento,"noIndex");
+				echo "ninguno";	
 			}
 		}
-		//print_r($documentos),
 		fclose($fp);
+		
 		//se inserta en la base de datos.
 		insertar('PuntosMuestreo','usuarios',$documentos);
 		header('Location: index.php');

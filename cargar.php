@@ -24,7 +24,7 @@
 					}
 					$cont++;
 				}
-				//si la linea solo tiene una palabra no se acepta
+				//si la linea de encabezados solo tiene una palabra no se acepta
 				if(count($linea)==1){
 					unset($linea);
 					$errores[]="Archivo vacio, solamente tiene una linea";

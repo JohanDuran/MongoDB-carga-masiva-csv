@@ -28,25 +28,44 @@ function drop(ev) {
 function validateForm(){
 	var cantidadEncabezados =50+ $("#dinamicos").children().length;
 	var textoEncabezados='';
+	var islat=false;//obligatorio
+	var islng=false;//obligatorio
+
 	for (var i = 50; i < cantidadEncabezados; i++) {
 		var id = "#"+i;
 		var cantidadHijos=$(id).children().length;
 		var text="";
+		//si tiene más de elemento arrastrado se ese valor
+		//caso contrario el suyo
 		if(cantidadHijos!=0){
 			text=$("#"+i).children().text().trim();
 		}else{
 			text=$("#"+i).text().trim();
 		}
+		//Todos las columnas con coma menos la última
 		if(i!=cantidadEncabezados-1){
 			textoEncabezados+=text+",";
 		}else{
 			textoEncabezados+=text;
 		}
+
+		//se verifican campos obligatorios
+		if(text=="lat"){
+			islat=true;
+		}else if(text=="lng"){
+			islng=true;
+		}
 	}
-	var textoArchivo = $("#archivo").val();
-	$("#archivo").val('');
-	$("#archivo").val(textoEncabezados+";"+textoArchivo);
-	return true;
+
+	if(islat && islng){
+		var textoArchivo = $("#archivo").val();
+		$("#archivo").val('');
+		$("#archivo").val(textoEncabezados+";"+textoArchivo);
+		console.log($("#archivo").val());
+		return true;
+	}else{
+		return false;
+	}
 }
 
 
