@@ -46,28 +46,24 @@
 						<?php endforeach;?>
 					</div>
 				</div>
-		<!-- Se muestra el json aun no se ha cargado con datos nuevos -->
-		<?php 
-			//insertar($file_tmp,','),
-		?>
+				<br>
+				<br>
+				<br>
+				<form action="insertarEnBD.php" method="get" onsubmit="return validateForm()" class="center">
+					<input type="text" name="archivo" value="<?php echo $archivo ?>" class="oculto" id="archivo">
+					<input type="submit" class="btn btn-primary">
+					<a href="index.php"><button class="btn btn-default">Cancelar</button></a>
+				</form>
+				<br>
+				<br>
+				<br>
+				<br>
 		<!-- Seccion de errores -->
 		<?php else: ?>	<!-- Caso donde si existen errores, mostar errores y opcion de volver -->
 			<?php foreach ($errores as $error => $value):?>
 				<p><?php echo $value; ?></p>
 			<?php endforeach;?>
 		<?php endif; ?>
-		<br>
-		<br>
-		<br>
-		<form action="insertarEnBD.php" method="get" onsubmit="return validateForm()" class="center">
-			<input type="text" name="archivo" value="<?php echo $archivo ?>" class="oculto" id="archivo">
-			<input type="submit" class="btn btn-primary">
-			<a href="index.php"><button class="btn btn-default">Cancelar</button></a>
-		</form>
-		<br>
-		<br>
-		<br>
-		<br>
 	</div>
 		<!-- JQUERY -->
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>

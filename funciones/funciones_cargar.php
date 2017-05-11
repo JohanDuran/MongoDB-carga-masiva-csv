@@ -6,7 +6,7 @@
 	}
 
 	function verificarCsv($file_ext,$file_size){
-		$extensiones= array("php","html","csv");
+		$extensiones= array("csv");
 		$errors=array();
 		if(in_array($file_ext,$extensiones)=== false){
 		 	$errors[]="Extension no permitida";
