@@ -10,6 +10,11 @@
 </head>
 <body>
 	<div class="container">
+		<?php if ($insertado == 1):?>
+			<div class="alert alert-info ">Archivo insertado con exito.</div>
+	    <?php elseif($insertado == 2): ?>
+			<div class="alert alert-danger">Error al insertar los datos.</div>	
+    	<?php endif; ?>
 	    <h2>Subir archivos csv</h2>
 		<form action="cargar.php" method="post" onsubmit="return validateFile()" enctype="multipart/form-data">
 		<div class="form-group">
@@ -18,6 +23,13 @@
 		</div>
 	    	<input type="submit" class="btn btn-default" value="Cargar archivo" name="submit">
 		</form>
+		<br><br>
+		<div class="alert alert-danger">Que debes saber:
+		<div class="alert alert-info ">Los campos deben estar separados por coma</div>
+		<div class="alert alert-info ">Los datos deben contener geolocalización (Latitud, Longitud) para ser desplegados sobre el mapa</div>
+		</div>
+
+	
 	</div>
 
 

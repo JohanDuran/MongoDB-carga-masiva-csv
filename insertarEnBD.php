@@ -5,12 +5,12 @@
 	require_once('funciones/funciones_insertar_BD.php');
 	require 'vendor/autoload.php';
 
-	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//$fp = fopen('file.csv', 'w');
 		$fp = tmpfile();
 		fwrite($fp, '');
 		//Se obtienen las lineas
-		$lineas = parser($_GET['archivo'],";");
+		$lineas = parser($_POST['archivo'],";");
 		//se divide el texto en palabras que viene separadas por comas
 		foreach ($lineas as $linea) {
 			$palabras=parser($linea,",");
@@ -32,23 +32,20 @@
 		if(checkIndexHolandes($documentos[0])){//si se puede calcular indice holandes
 			foreach ($documentos as $documento) {
 				$documentos[$contador++]=crearCamposIndice($documento,"holandes");
-				echo "holandes";
 			}	
 		}else if(checkIndexNsf($documentos[0])){//si se puede calcular indice nsf
 			foreach ($documentos as $documento) {
 				$documentos[$contador++]=crearCamposIndice($documento,"nsf");
-				echo "nsf";	
 			}
 		}else{//ni holandes ni nsf se carga todo en opcionales.
 			foreach ($documentos as $documento) {
 				$documentos[$contador++]=crearCamposIndice($documento,"noIndex");
-				echo "ninguno";	
 			}
 		}
 		fclose($fp);
 		
 		//se inserta en la base de datos.
 		insertar('PuntosMuestreo','usuarios',$documentos);
-		header('Location: index.php');
+		header('Location: index.php?insertado=1');
 }
  ?>

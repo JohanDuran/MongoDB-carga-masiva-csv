@@ -1,5 +1,4 @@
 //del 50 en adelante son los elementos cargados por el usuario
-//del 50 en adelante son los elementos cargados por el usuario
 //del 0 al 49 son los elementos por defecto
 
 //Se genera un estilo sobre el campo para indicar si se puede o no soltar el elemento que esta siendo arrastrado

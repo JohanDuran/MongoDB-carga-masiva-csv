@@ -23,7 +23,7 @@
 							<?php  $contador=50;?><!-- del 50 en adelante son los nuevos -->
 							<?php foreach ($linea as $palabra):?>
 								<!-- Las opciones dadas por el usuario -->
-								<span name="contenedor" id='<?=$contador?>' class="btn btn-info double-size" ondrop="drop(event)" ondragover="allowDrop(event)"> 
+								<span name="contenedor" id='<?php echo $contador++;?>' class="btn btn-info double-size" ondrop="drop(event)" ondragover="allowDrop(event)"> 
 									<?php 
 										if (strlen($palabra) <= 13) {
 											echo $palabra;
@@ -32,15 +32,13 @@
 										}
 									?>
 								</span>
-								 <?php $contador++; ?>
 							<?php endforeach;?>
 					</div>
 					<div id="estaticos" class="col-md-8 col-sm-8 col-xs-8 border-shadaw" ondrop="drop(event)" ondragover="allowDrop(event)">
 						<?php  $contador=0;?> <!-- tiene 50 espacios en caso de necesitar mas cambiarlo arriba -->
 						<!-- Todas las opciones para hacer match -->
 						<?php foreach ($indices as $indice):?>
-							<!-- Las opciones dadas por el usuario -->
-							<span id="<?php echo $contador, $contador++; ?>" class="same-size btn btn-success" draggable="true" ondragstart="drag(event)" >
+							<span id="<?php echo $contador++; ?>" class="same-size btn btn-success" draggable="true" ondragstart="drag(event)" >
 								<?php echo $indice; ?>
 							</span>
 						<?php endforeach;?>
@@ -49,7 +47,7 @@
 				<br>
 				<br>
 				<br>
-				<form action="insertarEnBD.php" method="get" onsubmit="return validateForm()" class="center">
+				<form action="insertarEnBD.php" method="POST" onsubmit="return validateForm()" class="center">
 					<input type="text" name="archivo" value="<?php echo $archivo ?>" class="oculto" id="archivo">
 					<input type="submit" class="btn btn-primary">
 					<a href="index.php"><button class="btn btn-default">Cancelar</button></a>
