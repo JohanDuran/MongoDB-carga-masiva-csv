@@ -15,7 +15,7 @@
 		foreach ($lineas as $linea) {
 			$palabras=parser($linea,",");
 			$palabras = [$palabras];
-			foreach ($palabras as $palabra ) {
+			foreach ($palabras as $palabra) {
 			    //se insertan las palabras dentro del archivo
 			    fputcsv($fp, $palabra);
 			}
