@@ -22,7 +22,7 @@
 		}
 		//se vuelve al inicio del archivo
 		fseek($fp, 0);
-		//se obtiene el path del archivo para ubicarlo dentor de getJson
+		//se obtiene el path del archivo para ubicarlo dentro de getJson
 		$metaData = stream_get_meta_data($fp);
 		$filepath = $metaData['uri'];
 		//se obtiene con los datos

@@ -9,6 +9,25 @@
 </head>
 <body>
 	<div class="container">
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+
+		  <!-- Modal content -->
+		  <div class="modal-content">
+		    <div class="modal-header">
+		      <span class="close">&times;</span>
+		      <h2>Monitoreo Agua</h2>
+		    </div>
+		    <div class="modal-body">
+		      <p>En necesario hacer match de todos los parámetros obligatorios</p>
+		      <p>Parámetros obligatorios: Lat, Lng</p>
+		    </div>
+		    <div class="modal-footer">
+		      <h3>Universidad de Costa Rica - 2017</h3>
+		    </div>
+		  </div>
+		</div>		
+
 		<div class="center">
 			<h2 class>Pareo</h2>
 			<div class="alert alert-info ">Arrastre los elementos de la derecho con su correspondiente de la izquierda.</div>
@@ -49,6 +68,7 @@
 				<br>
 				<form action="insertarEnBD.php" method="POST" onsubmit="return validateForm()" class="center">
 					<input type="text" name="archivo" value="<?php echo $archivo ?>" class="oculto" id="archivo">
+					<input type="text" name="colOrRow" value="<?php echo $colOrRow ?>" class="oculto" id="colOrRow">
 					<input type="submit" class="btn btn-primary">
 					<a href="index.php"><button class="btn btn-default">Cancelar</button></a>
 				</form>

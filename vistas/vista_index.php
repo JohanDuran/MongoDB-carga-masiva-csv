@@ -20,6 +20,8 @@
 		<div class="form-group">
 			<label for="fileToUpload">Seleccione archivo:</label>
 		    <input type="file" id="archivo" class="filestyle" data-buttonName="btn-primary" name="file" id="fileToUpload">
+			<label class="radio-inline"><input type="radio" name="colOrRow" value="col" checked>csv por columnas</label>
+			<label class="radio-inline"><input type="radio" name="colOrRow"  value="row">csv por filas</label>
 		</div>
 	    	<input type="submit" class="btn btn-default" value="Cargar archivo" name="submit">
 		</form>
