@@ -10,6 +10,11 @@
 	function getRequiredNsf(){
 		return ["PO2","DBO","CF","pH"];
 	}
+	
+	function getRequiredGlobal(){
+		return ['PO2','DBO','CF','pH']; 
+	}
+
 
 	function getGenerals(){
 		return ['usuario','fecha','indice_usado','val_indice','color','temp_agua','velocidad_agua','velocidad_agua','area_cauce_rio'];

@@ -74,7 +74,6 @@
 				$errores[]="No se puede leer el archivo";
 			}
 			require'vistas/vista_cargar.php';
-
 		}
 	}
 ?>
